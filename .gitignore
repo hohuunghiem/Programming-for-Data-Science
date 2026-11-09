@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+.env
+
+# Jupyter / editor
+.DS_Store
+.vscode/
+
+# Data files (do not commit large/raw datasets)
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+# Model artifacts
+*.pkl
+*.joblib
+*.parquet
+*.feather
