@@ -20,3 +20,9 @@ data/processed/*
 *.joblib
 *.parquet
 *.feather
+
+# Windows Zone.Identifier metadata
+Zone.Identifier
+**/Zone.Identifier
+*:Zone.Identifier
+**/*:Zone.Identifier
