@@ -164,7 +164,7 @@ Code dùng lại có thể chuyển thành hàm trong `src/`, nhưng Notebook v�
 
 ## 3.4B. Machine Learning analysis
 
-**File chính:** `notebooks/03_ml_question.ipynb`
+**File chính:** `notebooks/03_ml_question.ipynb` và `notebooks/02_analysis.ipynb`
 
 ### Cần làm gì?
 
