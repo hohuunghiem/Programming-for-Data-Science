@@ -19,10 +19,24 @@ Update the table to match the actual team size.
 - **Topic:** Asteroids and their physical/orbital characteristics.
 - **Main objective:** Use real-world asteroid data to investigate meaningful questions through data exploration, statistical analysis, visualization, and at least one machine-learning question.
 - **Dataset page:** https://www.kaggle.com/datasets/sakhawat18/asteroid-dataset
-- **Original data source / collecting organization:** TODO – verify from the dataset documentation and cite the exact source.
-- **License shown on Kaggle:** Database: Open Database License (ODbL) 1.0; Contents: © Original Authors. Read the license and document attribution/share-alike obligations before redistributing any data.
-- **Dataset version / download date:** TODO
+- **Original data documentation:** NASA/JPL Small-Body Database (SBDB); [field definitions](https://ssd-api.jpl.nasa.gov/doc/sbdb_query.html) and [orbital classifications](https://ssd-api.jpl.nasa.gov/doc/sbdb_filter.html). The CSV is a catalogue snapshot, not raw telescope observations.
+- **License:** The initial scaffold recorded `Database: Open Database License (ODbL) 1.0; Contents: © Original Authors`. Confirm this on the downloaded Kaggle version before redistribution; the ZIP contains no license file.
+- **Local download:** Supplied by the team on 2026-11-16 as `archive.zip`; extracted `dataset.csv` is 456,576,403 bytes. The ZIP does not identify its Kaggle version number, which still needs confirmation. Notebook 01 prints the source SHA-256 for reproducibility.
 - **Related public notebooks or prior studies:** TODO – search, list, and explain how this project differs.
+
+### Current phase: basic preprocessing
+
+Notebook 01 documents every column, checks identifiers/duplicates/missingness,
+summarizes individual variables, trims outer whitespace in `full_name`, and
+exports a minimally cleaned dataset with separate quality-review files. Records,
+columns, missing measurements and rare classes are retained. Suspicious values
+are flagged for review rather than automatically removed or filled.
+
+The group has not selected research questions yet. Relationships between
+variables, hypothesis tests, feature engineering and machine learning are for a
+later phase. The question-count/D1–D6/ML requirements in the initial scaffold
+must be checked separately against the applicable assignment; they are not
+acceptance criteria for this preprocessing phase.
 
 ## 3. Research questions
 
@@ -99,16 +113,56 @@ jupyter lab
 
 ### Add the dataset
 
-1. Download the dataset from the Kaggle page.
-2. Put the CSV file in `data/raw/`.
-3. Record the exact filename, download date, source, and version.
-4. Update the `DATA_PATH` variable in `01_collection_exploration.ipynb`.
+1. Download the dataset from the [Kaggle page](https://www.kaggle.com/datasets/sakhawat18/asteroid-dataset).
+2. Extract `dataset.csv` to `data/raw/dataset.csv`; do not modify this raw file.
+3. Record the downloaded version, date and license. The local file is ignored by Git.
+4. Open `01_collection_exploration.ipynb` from the repository root or `notebooks/`, select the environment's kernel, and use **Restart Kernel and Run All**.
 
-### Run notebooks in order
+### Basic preprocessing outputs
 
-1. `01_collection_exploration.ipynb`
-2. `02_analysis.ipynb`
-3. `03_ml_question.ipynb`
+Notebook 01 writes these files to `data/processed/` after identifier and value-preservation checks:
+
+| File | Contents |
+|---|---|
+| `asteroids_clean.csv` | All source records/columns, with trimmed object names |
+| `cleaning_log.csv` | Applied changes and before/after row counts |
+| `records_to_review.csv` | Flagged records and Boolean flags naming affected fields/issues |
+| `quality_review_summary.csv` | Counts for all quality checks; flags may overlap |
+
+Rerunning replaces generated files. The notebook verifies the raw checksum and
+reloads the main export to check values and identifiers. A parse error or a
+missing/blank/repeated `id` or `spkid` stops the run for review. A flagged value
+remains in the export; the review file does not establish that it is an error.
+
+CSV does not preserve pandas dtypes. To reload the shared file:
+
+```python
+from pathlib import Path
+import pandas as pd
+
+project_root = Path.cwd()
+if project_root.name == "notebooks":
+    project_root = project_root.parent
+text_columns = [
+    "id", "spkid", "full_name", "pdes", "name", "prefix",
+    "neo", "pha", "orbit_id", "equinox", "class",
+]
+df = pd.read_csv(
+    project_root / "data/processed/asteroids_clean.csv",
+    dtype={col: "string" for col in text_columns},
+    keep_default_na=False, na_values=[""],
+    low_memory=False, float_precision="round_trip",
+)
+```
+
+Run the small preprocessing checks from the repository root:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+Notebook 01 is the deliverable for the current phase. Notebooks 02 and 03 remain
+templates for work after research questions are selected.
 
 ## 6. Key findings
 
@@ -125,5 +179,7 @@ See `docs/PROJECT_PLAN.md`. Add the shared task-board link here when the team cr
 ## 9. References
 
 - Kaggle dataset: https://www.kaggle.com/datasets/sakhawat18/asteroid-dataset
-- Original source documentation: TODO
+- JPL field documentation: https://ssd-api.jpl.nasa.gov/doc/sbdb_query.html
+- JPL orbital classifications: https://ssd-api.jpl.nasa.gov/doc/sbdb_filter.html
+- Basic-exploration presentation examples: [P4DS-final](https://github.com/BoonRealCuaaaaa/P4DS-final/blob/main/02_Exploring-and-Preprocessing.ipynb), [Stroke Prediction Analysis, section III](https://github.com/Ddyln/Stroke-Prediction-Analysis/blob/main/report.ipynb). Used for structure, not copied cleaning rules.
 - Related research / public notebooks: TODO
