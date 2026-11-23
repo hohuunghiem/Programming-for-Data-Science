@@ -1,0 +1,10 @@
+{
+  "url": "https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=spkid%2Cpdes%2Cspec_B&sb-cdata=%7B%22AND%22%3A%5B%22spec_B%7CDF%22%5D%7D",
+  "retrieved_at_utc": "2026-11-21T20:41:04.929645+00:00",
+  "sha256": "1ea46e00177e1aebc194a210f460ba0a8c6201af5a3832a5fcae7ce6cb8dd18d",
+  "count": 1666,
+  "signature": {
+    "version": "1.0",
+    "source": "NASA/JPL SBDB (Small-Body DataBase) Query API"
+  }
+}
