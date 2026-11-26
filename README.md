@@ -8,18 +8,18 @@
 
 | Member | Student ID | GitHub username | Main responsibilities |
 |---|---|---|---|
-| Member 1 | TODO | TODO | TODO |
-| Member 2 | TODO | TODO | TODO |
-| Member 3 (if applicable) | TODO | TODO | TODO |
+| Nam | — | — | Q1, Q2 |
+| Nghiêm | — | — | Q3, Q5 |
+| Kiệt | — | — | Q4 |
 
-Update the table to match the actual team size.
+Nhóm sẽ bổ sung họ tên đầy đủ, MSSV và phân công Q6 khi chốt.
 
 ## 2. Project overview
 
 - **Topic:** Asteroids and their physical/orbital characteristics.
 - **Main objective:** Use real-world asteroid data to investigate meaningful questions through data exploration, statistical analysis, visualization, and at least one machine-learning question.
 - **Dataset page:** https://www.kaggle.com/datasets/sakhawat18/asteroid-dataset
-- **Original data source / collecting organization:** TODO – verify from the dataset documentation and cite the exact source.
+- **Original data source / collecting organization:** [NASA/JPL Small-Body Database](https://ssd-api.jpl.nasa.gov/doc/sbdb.html).
 - **License shown on Kaggle:** Database: Open Database License (ODbL) 1.0; Contents: © Original Authors. Read the license and document attribution/share-alike obligations before redistributing any data.
 - **Dataset version / download date:** TODO
 - **Related public notebooks or prior studies:** TODO – search, list, and explain how this project differs.
@@ -28,16 +28,14 @@ Update the table to match the actual team size.
 
 The assignment requires **2 × n questions**, where n is the number of team members. At least one question must be answered using a machine-learning model.
 
-| ID | Question | Type (Non-ML / ML) | Owner | D criteria (for Non-ML) | Status |
+| Câu | Câu hỏi | Loại | Phụ trách | Tiêu chí | Notebook |
 |---|---|---|---|---|---|
-| Q1 | To be decided after data exploration | Non-ML | TODO | TODO | Draft |
-| Q2 | To be decided after data exploration | Non-ML | TODO | TODO | Draft |
-| Q3 | To be decided after data exploration | Non-ML | TODO | TODO | Draft |
-| Q4 | To be decided after data exploration | Non-ML | TODO | TODO | Draft |
-| Q5 | To be decided after data exploration | Non-ML | TODO | TODO | Draft |
-| Q6 | To be decided after data exploration | ML / Non-ML | TODO | N/A if ML | Draft |
-
-Adjust the number of rows to exactly **2 × n**. The table above is only a starter example for a three-person team, not a final decision.
+| Q1 | Hình dạng quỹ đạo liên hệ thế nào với MOID và tỷ lệ PHA khi xét theo lớp và độ nghiêng quỹ đạo? | Non-ML | Nam | D3, D4, D5, D6 | 02 |
+| Q2 | Đường kính và suất phản chiếu thay đổi thế nào theo vùng quỹ đạo khi so các vật thể cùng khoảng độ sáng H? | Non-ML | Nam | D3, D4, D5, D6 | 02 |
+| Q3 | Nhóm quỹ đạo nào có dữ liệu vật lý đầy đủ nhất trước và sau chuẩn hóa theo H? | Non-ML | Nghiêm | D2, D3, D4, D6 | 02 |
+| Q4 | Ở cùng khoảng đường kính, nhóm C hay S có tỷ lệ bề mặt tối cao hơn? | Non-ML | Kiệt | D1, D2, D3, D4 | 02 |
+| Q5 | Biết thêm quỹ đạo có giúp ước lượng đường kính chính xác hơn so với chỉ biết H? | ML | Nghiêm | — | 03 |
+| Q6 | Chờ nhóm chốt câu hỏi | — | — | — | — |
 
 ### Non-ML depth checklist
 
@@ -100,9 +98,9 @@ jupyter lab
 ### Add the dataset
 
 1. Download the dataset from the Kaggle page.
-2. Put the CSV file in `data/raw/`.
+2. Đặt CSV đã giải nén tại `data/raw/dataset.csv`.
 3. Record the exact filename, download date, source, and version.
-4. Update the `DATA_PATH` variable in `01_collection_exploration.ipynb`.
+4. Notebook 01 đọc đường dẫn trên và xuất các bảng vào `data/processed/`.
 
 ### Run notebooks in order
 
