@@ -10,9 +10,9 @@
 |---|---|---|---|
 | Nam | — | — | Q1, Q2 |
 | Nghiêm | — | — | Q3, Q5 |
-| Kiệt | — | — | Q4 |
+| Kiệt | — | — | Q4, Q6 |
 
-Nhóm sẽ bổ sung họ tên đầy đủ, MSSV và phân công Q6 khi chốt.
+Nhóm sẽ bổ sung họ tên đầy đủ và MSSV.
 
 ## 2. Project overview
 
@@ -35,7 +35,7 @@ The assignment requires **2 × n questions**, where n is the number of team memb
 | Q3 | Nhóm quỹ đạo nào có dữ liệu vật lý đầy đủ nhất trước và sau chuẩn hóa theo H? | Non-ML | Nghiêm | D2, D3, D4, D6 | 02 |
 | Q4 | Ở cùng khoảng đường kính, nhóm C hay S có tỷ lệ bề mặt tối cao hơn? | Non-ML | Kiệt | D1, D2, D3, D4 | 02 |
 | Q5 | Biết thêm quỹ đạo có giúp ước lượng đường kính chính xác hơn so với chỉ biết H? | ML | Nghiêm | — | 03 |
-| Q6 | Chờ nhóm chốt câu hỏi | — | — | — | — |
+| Q6 | Độ sáng và quỹ đạo có giúp ước lượng chu kỳ tự quay và tìm các vật thể quay một vòng trong tối đa 8 giờ? | ML | Kiệt | — | 03 |
 
 ### Non-ML depth checklist
 
@@ -68,6 +68,7 @@ project-name/
 ├── LLM_USAGE.md
 ├── .gitignore
 ├── data/
+│   ├── external/
 │   ├── raw/
 │   └── processed/
 ├── src/
@@ -101,6 +102,8 @@ jupyter lab
 2. Đặt CSV đã giải nén tại `data/raw/dataset.csv`.
 3. Record the exact filename, download date, source, and version.
 4. Notebook 01 đọc đường dẫn trên và xuất các bảng vào `data/processed/`.
+
+Q6 trong Notebook 03 dùng thêm [bản chu kỳ tự quay NASA/JPL](data/external/README.md) đã lưu trong repo.
 
 ### Run notebooks in order
 
