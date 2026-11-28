@@ -5,6 +5,7 @@ dependencies:
   - python=3.11
   - numpy
   - pandas
+  - jinja2
   - matplotlib
   - seaborn
   - scipy
